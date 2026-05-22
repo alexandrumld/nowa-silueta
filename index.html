@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -100,7 +103,6 @@ nav.scrolled {
   letter-spacing: 0.18em;
   color: var(--gray-muted);
   text-decoration: none;
-  transition: color 0.3s ease;
   position: relative;
 }
 
@@ -115,7 +117,6 @@ nav.scrolled {
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { width: 100%; }
 
 .nav-cta {
@@ -127,12 +128,7 @@ nav.scrolled {
   background: var(--cyan);
   padding: 0.55rem 1.4rem;
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-
-.nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(29, 255, 241, 0.3);
+  display: inline-block;
 }
 
 /* Mobile toggle */
@@ -318,7 +314,6 @@ nav.scrolled {
   background: var(--cyan);
   padding: 0.9rem 2.2rem;
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -336,18 +331,10 @@ nav.scrolled {
 
 .btn-primary:hover::before { left: 100%; }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(29, 255, 241, 0.35);
-}
-
 .btn-primary svg {
   width: 18px;
   height: 18px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.btn-primary:hover svg { transform: translateX(4px); }
 
 .hero-phone {
   font-family: var(--f-body);
@@ -506,7 +493,6 @@ nav.scrolled {
   grid-template-columns: auto 1fr;
   gap: 2rem;
   align-items: start;
-  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 768px) {
@@ -516,9 +502,7 @@ nav.scrolled {
   }
 }
 
-.service-item:hover {
-  padding-left: 1rem;
-}
+.
 
 .service-item:first-child {
   border-top: 1px solid var(--gray-dark);
@@ -589,11 +573,6 @@ nav.scrolled {
   background: var(--bg);
   padding: 3rem 2rem;
   position: relative;
-  transition: background 0.4s ease;
-}
-
-.monitor-cell:hover {
-  background: var(--surface-raised);
 }
 
 .monitor-cell .monitor-icon {
@@ -838,62 +817,49 @@ footer {
 
 /* ═══════════════════════════════════════════
    ANIMATIONS
-   ═══════════════════════════════════════════ */
-.reveal {
+/* ─── Animation (GSAP-driven) ─── */
+/* Elements start invisible; GSAP animates them in on scroll. */
+.section-tag,
+.section-heading,
+.body-text,
+.signature,
+.service-item,
+.monitor-cell,
+.monitor-cta,
+.pricing-card,
+.pricing-amount,
+.hero-tag,
+.hero-title,
+.hero-subtitle,
+.hero-actions,
+.hero-phone {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-d1 { transition-delay: 0.07s; }
-.reveal-d2 { transition-delay: 0.14s; }
-.reveal-d3 { transition-delay: 0.21s; }
-.reveal-d4 { transition-delay: 0.28s; }
-.reveal-d5 { transition-delay: 0.35s; }
-
-/* Breathing glow on hero */
-@keyframes breathe {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-.hero-glow {
-  position: absolute;
-  top: 50%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(29,255,241,0.08) 0%, transparent 55%);
-  pointer-events: none;
-  animation: breathe 6s ease-in-out infinite;
-}
-
-/* Horizontal rule animation */
-@keyframes expand-line {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-.line-anim {
-  height: 1px;
-  background: var(--cyan);
-  transform-origin: left;
-  animation: expand-line 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
+/* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
+  .section-tag,
+  .section-heading,
+  .body-text,
+  .signature,
+  .service-item,
+  .monitor-cell,
+  .monitor-cta,
+  .pricing-card,
+  .pricing-amount,
+  .hero-tag,
+  .hero-title,
+  .hero-subtitle,
+  .hero-actions,
+  .hero-phone {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   .hero-glow { animation: none; }
 }
 </style>
@@ -932,14 +898,14 @@ footer {
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-tag reveal">by Ayana</div>
-    <h1 class="hero-title reveal reveal-d1">
+    <div class="hero-tag">by Ayana</div>
+    <h1 class="hero-title">
       NOWA<br><span class="silueta">SILUETA</span>
     </h1>
-    <p class="hero-subtitle reveal reveal-d2">
+    <p class="hero-subtitle">
       Rezultatele apar când <em>renunți la scurtături</em> și alegi un program construit corect.
     </p>
-    <div class="hero-actions reveal reveal-d3">
+    <div class="hero-actions">
       <a href="#pret" class="btn-primary">
         Transformarea începe acum
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -954,16 +920,16 @@ footer {
      ═══════════════════════════════════════════ -->
 <section class="welcome" id="despre">
   <div class="section-wrap">
-    <div class="section-tag reveal">Despre</div>
+    <div class="section-tag">Despre</div>
     <div class="welcome-grid">
       <div>
-        <h2 class="section-heading reveal reveal-d1">BINE AI VENIT<br>ÎN <span class="cyan">PROGRAMUL</span></h2>
+        <h2 class="section-heading">BINE AI VENIT<br>ÎN <span class="cyan">PROGRAMUL</span></h2>
       </div>
       <div>
-        <p class="body-text reveal reveal-d2">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
-        <p class="body-text reveal reveal-d3">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
-        <p class="body-text reveal reveal-d4">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
-        <div class="signature reveal reveal-d5">— Ayana</div>
+        <p class="body-text">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
+        <p class="body-text">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
+        <p class="body-text">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
+        <div class="signature">— Ayana</div>
       </div>
     </div>
   </div>
@@ -974,29 +940,29 @@ footer {
      ═══════════════════════════════════════════ -->
 <section class="services" id="servicii">
   <div class="section-wrap">
-    <div class="section-tag reveal">Servicii</div>
-    <h2 class="section-heading reveal reveal-d1">CUM TE AJUT<br>SĂ <span class="cyan">EVOLUEZI</span></h2>
+    <div class="section-tag">Servicii</div>
+    <h2 class="section-heading">CUM TE AJUT<br>SĂ <span class="cyan">EVOLUEZI</span></h2>
 
     <div class="services-list">
-      <div class="service-item reveal reveal-d1">
+      <div class="service-item">
         <span class="service-num">01</span>
         <div class="service-title">PLAN ALIMENTAR <span class="cyan">PERSONALIZAT</span></div>
         <div class="service-desc">Un plan alimentar creat special pentru obiectivele tale, adaptat stilului tău de viață și preferințelor. Totul structurat clar — ușor de urmat, ușor de obținut rezultate.</div>
       </div>
 
-      <div class="service-item reveal reveal-d2">
+      <div class="service-item">
         <span class="service-num">02</span>
         <div class="service-title">SĂNĂTOS, NU DOAR <span class="cyan">SLAB</span></div>
         <div class="service-desc">Accent pe nutriție echilibrată, nu pe restricții. Vei învăța să mănânci corect, să îți hrănești corpul și să îți menții energia. Transformare sustenabilă.</div>
       </div>
 
-      <div class="service-item reveal reveal-d3">
+      <div class="service-item">
         <span class="service-num">03</span>
         <div class="service-title">EXERCIȚII EXPLICATE <span class="cyan">ÎN DETALIU</span></div>
         <div class="service-desc">Primești explicații clare pentru fiecare exercițiu — tehnică, execuție corectă și integrare eficientă. Totul gândit pentru siguranță și progres real.</div>
       </div>
 
-      <div class="service-item reveal reveal-d4">
+      <div class="service-item">
         <span class="service-num">04</span>
         <div class="service-title">PLAN STRUCTURAT PENTRU <span class="cyan">NIVELUL TĂU</span></div>
         <div class="service-desc">Program adaptat nivelului tău actual — începătoare sau avansată. Evoluezi treptat, într-un ritm sănătos și sustenabil, cu rezultate vizibile la fiecare etapă.</div>
@@ -1010,26 +976,26 @@ footer {
      ═══════════════════════════════════════════ -->
 <section class="monitoring" id="monitorizare">
   <div class="section-wrap">
-    <div class="section-tag reveal">Monitorizare</div>
-    <h2 class="section-heading reveal reveal-d1">LUCRĂM CA O <span class="cyan">ECHIPĂ</span></h2>
+    <div class="section-tag">Monitorizare</div>
+    <h2 class="section-heading">LUCRĂM CA O <span class="cyan">ECHIPĂ</span></h2>
 
     <div class="monitor-grid">
-      <div class="monitor-cell reveal reveal-d1">
+      <div class="monitor-cell">
         <span class="monitor-icon">📹</span>
         <div class="monitor-label">EVALUARE <span class="cyan">VIDEO</span></div>
         <div class="monitor-text">Îți analizez exercițiile prin video — corectez tehnică, postură și intensitate în timp real.</div>
       </div>
-      <div class="monitor-cell reveal reveal-d2">
+      <div class="monitor-cell">
         <span class="monitor-icon">💬</span>
         <div class="monitor-label">SUPORT <span class="cyan">24/7</span></div>
         <div class="monitor-text">Sunt alături de tine non-stop — motivație, răspunsuri și consecvență oricând ai nevoie.</div>
       </div>
-      <div class="monitor-cell reveal reveal-d3">
+      <div class="monitor-cell">
         <span class="monitor-icon">📸</span>
         <div class="monitor-label">GHIDARE <span class="cyan">REAL</span></div>
         <div class="monitor-text">Trimite-mi poze cu mesele tale și te ghidez instant — rămâi pe direcția corectă pas cu pas.</div>
       </div>
-      <div class="monitor-cta reveal reveal-d4">
+      <div class="monitor-cta">
         <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
           <div class="monitor-cta-text">HAI SĂ FACEM TREABA! →</div>
         </a>
@@ -1043,13 +1009,13 @@ footer {
      ═══════════════════════════════════════════ -->
 <section class="story" id="povestea">
   <div class="section-wrap">
-    <div class="section-tag reveal">Povestea</div>
-    <h2 class="section-heading reveal reveal-d1" style="margin-bottom: 2.5rem;">POVESTEA <span class="cyan">MEA</span></h2>
+    <div class="section-tag">Povestea</div>
+    <h2 class="section-heading" style="margin-bottom: 2.5rem;">POVESTEA <span class="cyan">MEA</span></h2>
     <div class="story-content">
-      <p class="body-text reveal reveal-d2">Numele meu este <span class="cyan">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
-      <p class="body-text reveal reveal-d3">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="cyan">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
-      <p class="body-text reveal reveal-d4">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="cyan">evoluția reală vine din consecvență și mindset</span>.</p>
-      <p class="body-text reveal reveal-d5">Tot ce am învățat vreau acum să dau mai departe.</p>
+      <p class="body-text">Numele meu este <span class="cyan">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
+      <p class="body-text">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="cyan">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
+      <p class="body-text">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="cyan">evoluția reală vine din consecvență și mindset</span>.</p>
+      <p class="body-text">Tot ce am învățat vreau acum să dau mai departe.</p>
     </div>
   </div>
 </section>
@@ -1059,10 +1025,10 @@ footer {
      ═══════════════════════════════════════════ -->
 <section class="pricing" id="pret">
   <div class="section-wrap">
-    <div class="section-tag reveal">Preț</div>
-    <h2 class="section-heading reveal reveal-d1">HAI SĂ LUCRĂM <span class="cyan">ÎMPREUNĂ</span></h2>
+    <div class="section-tag">Preț</div>
+    <h2 class="section-heading">HAI SĂ LUCRĂM <span class="cyan">ÎMPREUNĂ</span></h2>
 
-    <div class="pricing-card reveal reveal-d2">
+    <div class="pricing-card">
       <div class="pricing-heading">PROGRAM <span class="cyan">COMPLET</span></div>
       <div class="pricing-amount">350<span class="unit">ron</span></div>
       <div class="pricing-period">pe lună</div>
@@ -1096,27 +1062,180 @@ footer {
 </footer>
 
 <script>
-// Scroll reveal
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// Nav scroll bg
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+  // ─── Nav scroll bg ───
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
 
-// Mobile menu
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const toggle = document.querySelector('.menu-toggle');
-  menu.classList.toggle('active');
-  toggle.classList.toggle('active');
-  document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-}
+  // ─── Mobile menu ───
+  window.toggleMenu = function() {
+    const menu = document.getElementById('mobileMenu');
+    const toggle = document.querySelector('.menu-toggle');
+    menu.classList.toggle('active');
+    toggle.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+  };
+
+  if (prefersReducedMotion) {
+    // Instant visibility, no animations
+    document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+    return;
+  }
+
+  // ─── Hero entrance — cinematic stagger ───
+  const heroTl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.2 } });
+  heroTl
+    .from('.hero-tag', { y: 30, opacity: 0, duration: 0.8 }, 0.3)
+    .from('.hero-title', { y: 80, opacity: 0, duration: 1.4 }, 0.5)
+    .from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.9 }, 1.0)
+    .from('.hero-actions', { y: 20, opacity: 0, duration: 0.8 }, 1.3)
+    .from('.hero-phone', { opacity: 0, duration: 0.6 }, 1.5);
+
+  // ─── Scroll-triggered sections ───
+  gsap.utils.toArray('.section-tag').forEach(tag => {
+    gsap.from(tag, {
+      scrollTrigger: { trigger: tag, start: 'top 85%', toggleActions: 'play none none none' },
+      x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
+    });
+  });
+
+  gsap.utils.toArray('.section-heading').forEach(heading => {
+    gsap.from(heading, {
+      scrollTrigger: { trigger: heading, start: 'top 85%', toggleActions: 'play none none none' },
+      y: 60, opacity: 0, duration: 1.2, ease: 'expo.out'
+    });
+  });
+
+  gsap.utils.toArray('.body-text').forEach((p, i) => {
+    gsap.from(p, {
+      scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' },
+      y: 25, opacity: 0, duration: 0.9, ease: 'power3.out',
+      delay: i > 0 ? 0 : 0.15
+    });
+  });
+
+  gsap.from('.signature', {
+    scrollTrigger: { trigger: '.signature', start: 'top 90%' },
+    x: -30, opacity: 0, duration: 0.8, ease: 'power3.out'
+  });
+
+  // ─── Service items — staggered slide-in with line ───
+  gsap.utils.toArray('.service-item').forEach((item, i) => {
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: item, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+    tl.from(item, {
+      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.1
+    });
+  });
+
+  // ─── Monitor cells — staggered scale-in ───
+  gsap.utils.toArray('.monitor-cell').forEach((cell, i) => {
+    gsap.from(cell, {
+      scrollTrigger: { trigger: cell, start: 'top 88%', toggleActions: 'play none none none' },
+      y: 30, opacity: 0, scale: 0.96, duration: 0.7, ease: 'power3.out',
+      delay: i * 0.12
+    });
+  });
+
+  // ─── Monitor CTA — slide up with emphasis ───
+  gsap.from('.monitor-cta', {
+    scrollTrigger: { trigger: '.monitor-cta', start: 'top 88%' },
+    y: 40, opacity: 0, duration: 0.9, ease: 'expo.out'
+  });
+
+  // ─── Pricing card — cinematic entrance ───
+  gsap.from('.pricing-card', {
+    scrollTrigger: { trigger: '.pricing-card', start: 'top 82%' },
+    y: 60, opacity: 0, scale: 0.95, duration: 1.2, ease: 'expo.out'
+  });
+
+  gsap.from('.pricing-amount', {
+    scrollTrigger: { trigger: '.pricing-card', start: 'top 80%' },
+    y: 40, opacity: 0, duration: 1.0, ease: 'expo.out', delay: 0.3
+  });
+
+  // ─── Service item hover — title color shift + indent ───
+  document.querySelectorAll('.service-item').forEach(item => {
+    const title = item.querySelector('.service-title');
+    if (!title) return;
+
+    item.addEventListener('mouseenter', () => {
+      gsap.to(item, { paddingLeft: '1rem', duration: 0.35, ease: 'power2.out' });
+      gsap.to(title, { color: '#1DFFF1', duration: 0.3, ease: 'power2.out' });
+    });
+
+    item.addEventListener('mouseleave', () => {
+      gsap.to(item, { paddingLeft: 0, duration: 0.5, ease: 'power3.out' });
+      gsap.to(title, { color: '#FFFFFF', duration: 0.4, ease: 'power2.out' });
+    });
+  });
+
+  // ─── Monitor cells — subtle lift on hover ───
+  document.querySelectorAll('.monitor-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+      gsap.to(cell, { y: -4, duration: 0.35, ease: 'power2.out' });
+    });
+    cell.addEventListener('mouseleave', () => {
+      gsap.to(cell, { y: 0, duration: 0.5, ease: 'power3.out' });
+    });
+  });
+
+  // ─── CTA buttons — magnetic pull ───
+  document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(btn, { x: x * 0.25, y: y * 0.25, duration: 0.3, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1.2, 0.4)' });
+    });
+  });
+
+  // ─── Nav links — underline scale on hover ───
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const after = link.querySelector('::after'); // can't select pseudo, use gsap on the link itself
+    link.addEventListener('mouseenter', () => {
+      gsap.to(link, { color: '#1DFFF1', duration: 0.25, ease: 'power2.out' });
+    });
+    link.addEventListener('mouseleave', () => {
+      gsap.to(link, { color: '#5A5A5A', duration: 0.35, ease: 'power2.out' });
+    });
+  });
+
+  // ─── Hero glow — subtle parallax on mouse ───
+  const glow = document.querySelector('.hero-glow');
+  if (glow) {
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      gsap.to(glow, { x: x, y: y, duration: 1.2, ease: 'power2.out' });
+    });
+  }
+
+  // ─── Smooth scroll for anchor links ───
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        gsap.to(window, {
+          scrollTo: { y: target, offsetY: 80 },
+          duration: 1.2,
+          ease: 'expo.inOut'
+        });
+      }
+    });
+  });
+});
 </script>
 
 </body>
