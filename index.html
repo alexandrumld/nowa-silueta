@@ -4,148 +4,129 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOWA SILUETA — by Ayana</title>
-<meta name="description" content="Rezultatele apar când renunți la scurtături și alegi un program construit corect. Coaching personal fitness & nutriție.">
-<meta name="theme-color" content="#0C0C0C">
+<meta name="description" content="Rezultatele apar când renunți la scurtături și alegi un program construit corect. Coaching personal fitness & nutriție by Ayana.">
+<meta name="theme-color" content="#0A0A0A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── Reset & Base ─── */
+/* ─── Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --black: #0C0C0C;
-  --white: #FAFAF8;
-  --gray-100: #E8E8E4;
-  --gray-300: #B0B0AA;
-  --gray-500: #7A7A74;
-  --gray-700: #3A3A38;
-  --gray-900: #1A1A18;
-  --accent: #C4A882;
-  --accent-dim: rgba(196, 168, 130, 0.15);
-  --accent-glow: rgba(196, 168, 130, 0.08);
+  --black: #0A0A0A;
+  --black-light: #111111;
+  --black-card: #0E0E0E;
+  --white: #FFFFFF;
+  --cyan: #1DFFF1;
+  --cyan-dim: rgba(29, 255, 241, 0.12);
+  --cyan-glow: rgba(29, 255, 241, 0.06);
+  --gray: #ACACAC;
+  --gray-dark: #3A3A3A;
+  --gray-darker: #1A1A1A;
 
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-  --space-32: 8rem;
-
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Poppins', sans-serif;
 }
 
 html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--black);
-  color: var(--gray-100);
-  font-family: var(--font-sans);
-  font-weight: 300;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--cyan);
   color: var(--black);
 }
 
+a { color: inherit; }
+
 /* ─── Typography ─── */
-.hero-title {
-  font-family: var(--font-serif);
+.display {
+  font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(3.5rem, 10vw, 8rem);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  color: var(--white);
-}
-
-.hero-title .accent {
-  display: block;
-  font-style: italic;
-  color: var(--accent);
-}
-
-.section-label {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: var(--space-6);
-}
-
-.section-number {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(4rem, 8vw, 7rem);
-  line-height: 1;
-  color: var(--accent-glow);
-  /* big ghost number behind section */
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  opacity: 0.06;
-  pointer-events: none;
-  user-select: none;
-}
-
-h2 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  line-height: 1.15;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
   color: var(--white);
-  margin-bottom: var(--space-4);
 }
 
-h2 .thin {
+.display .cyan {
+  color: var(--cyan);
+}
+
+.display .outline {
+  -webkit-text-stroke: 2px var(--cyan);
+  color: transparent;
+}
+
+.display .black-fill {
+  color: var(--black);
+  -webkit-text-stroke: 1px var(--gray-dark);
+}
+
+.section-num {
+  font-family: var(--font-display);
   font-weight: 400;
-  color: var(--gray-300);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
-p {
-  max-width: 520px;
-  color: var(--gray-300);
+.body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: var(--gray);
+}
+
+.body-text .white {
+  color: var(--white);
+}
+
+.body-text .cyan {
+  color: var(--cyan);
 }
 
 /* ─── Layout ─── */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-8);
+  padding: 0 2rem;
 }
 
 @media (min-width: 768px) {
-  .container { padding: 0 var(--space-16); }
+  .container { padding: 0 3rem; }
+}
+
+@media (min-width: 1024px) {
+  .container { padding: 0 4rem; }
 }
 
 section {
   position: relative;
-  padding: var(--space-24) 0;
+  padding: 6rem 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
-  section { padding: var(--space-32) 0; }
+  section { padding: 8rem 0; }
 }
 
 /* ─── Navigation ─── */
@@ -155,39 +136,43 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: var(--space-6) var(--space-8);
+  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: linear-gradient(to bottom, rgba(12,12,12,0.8), rgba(12,12,12,0));
-  transition: background 0.4s var(--ease-out-expo);
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @media (min-width: 768px) {
-  nav { padding: var(--space-6) var(--space-16); }
+  nav { padding: 1.5rem 3rem; }
 }
 
 nav .logo {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--white);
   text-decoration: none;
+  display: flex;
+  gap: 0.3em;
 }
 
-nav .logo span {
-  color: var(--accent);
-  font-weight: 300;
+nav .logo .cyan {
+  color: var(--cyan);
 }
 
 nav .nav-links {
   display: none;
-  gap: var(--space-8);
   list-style: none;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -195,44 +180,91 @@ nav .nav-links {
 }
 
 nav .nav-links a {
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.7rem;
-  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gray-500);
+  letter-spacing: 0.15em;
+  color: var(--gray);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-nav .nav-links a:hover,
-nav .nav-links a:focus-visible {
-  color: var(--accent);
-}
+nav .nav-links a:hover { color: var(--cyan); }
 
-nav .cta-nav {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+nav .cta-btn {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--black);
-  background: var(--accent);
-  padding: var(--space-2) var(--space-6);
+  background: var(--cyan);
+  padding: 0.6rem 1.5rem;
   text-decoration: none;
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-nav .cta-nav:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(196, 168, 130, 0.3);
+nav .cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(29, 255, 241, 0.35);
 }
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+}
+
+.menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--black);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.active { display: flex; }
+
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover { color: var(--cyan); }
 
 /* ─── Hero ─── */
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: var(--space-24);
+  padding-top: 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -240,212 +272,256 @@ nav .cta-nav:hover {
 .hero::after {
   content: '';
   position: absolute;
-  right: -10%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  right: -15%;
+  top: 40%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 65%);
   pointer-events: none;
+  filter: blur(40px);
 }
 
-.hero-content {
+.hero .container {
   position: relative;
   z-index: 1;
 }
 
 .hero-title {
-  margin-bottom: var(--space-8);
+  font-size: clamp(5rem, 18vw, 14rem);
+  margin-bottom: 2rem;
+}
+
+.hero-title .line-2 {
+  display: block;
+  font-size: clamp(5rem, 18vw, 14rem);
 }
 
 .hero-tagline {
-  font-family: var(--font-sans);
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: 1rem;
-  color: var(--gray-300);
+  line-height: 1.8;
+  color: var(--gray);
   max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: var(--space-10);
+  margin-bottom: 3rem;
 }
 
 .hero-tagline em {
-  color: var(--accent);
+  color: var(--white);
   font-style: normal;
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 2rem;
 }
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--black);
-  background: var(--accent);
-  padding: var(--space-4) var(--space-10);
+  background: var(--cyan);
+  padding: 0.9rem 2.5rem;
   text-decoration: none;
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
 .hero-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(196, 168, 130, 0.3);
+  box-shadow: 0 8px 30px rgba(29, 255, 241, 0.35);
 }
 
 .hero-cta svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s var(--ease-out-expo);
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-cta:hover svg {
-  transform: translateX(4px);
+.hero-cta:hover svg { transform: translateX(4px); }
+
+.hero-phone {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
 }
 
-/* ─── Welcome / About ─── */
+.hero-phone a {
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-phone a:hover { color: var(--cyan); }
+
+/* ─── Section Layouts ─── */
 .welcome-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-12);
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
   .welcome-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: start;
   }
 }
 
-.welcome-text p + p {
-  margin-top: var(--space-4);
-}
-
-.welcome-signature {
-  margin-top: var(--space-8);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--accent);
+.welcome-grid .signature {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--cyan);
+  margin-top: 2rem;
 }
 
 /* ─── Services Grid ─── */
 .services-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .services-grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-10);
+    gap: 2rem;
   }
 }
 
 .service-card {
+  background: var(--black-card);
+  border: 1px solid var(--gray-darker);
+  padding: 2.5rem 2rem;
   position: relative;
-  padding: var(--space-10) var(--space-8);
-  background: var(--gray-900);
-  border: 1px solid rgba(255,255,255,0.04);
-  transition: transform 0.5s var(--ease-out-expo), border-color 0.4s ease;
+  overflow: hidden;
+  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-dim);
+  border-color: var(--cyan);
+  transform: translateY(-3px);
 }
 
-.service-card .card-number {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  color: var(--accent);
-  margin-bottom: var(--space-6);
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--cyan);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.service-card h3 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 1.3rem;
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card .card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--white);
-  margin-bottom: var(--space-4);
-  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
 }
 
-.service-card p {
+.service-card .card-title .cyan-label {
+  display: block;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.service-card .card-desc {
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  color: var(--gray-500);
   line-height: 1.7;
+  color: var(--gray);
 }
 
-/* ─── Monitoring Section ─── */
+/* ─── Monitor Section ─── */
 .monitor-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-  margin-top: var(--space-10);
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
 @media (min-width: 768px) {
-  .monitor-grid { gap: var(--space-10); }
+  .monitor-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
 }
 
-.mono-item {
+.mono-card {
+  background: var(--black-card);
+  border: 1px solid var(--gray-darker);
+  padding: 2rem 1.5rem;
   text-align: center;
-  padding: var(--space-8) var(--space-4);
-  border: 1px solid rgba(255,255,255,0.04);
-  background: var(--gray-900);
+  transition: border-color 0.4s ease;
 }
 
-.mono-item .mono-icon {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-4);
-}
+.mono-card:hover { border-color: var(--cyan); }
 
-.mono-item h4 {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+.mono-card .mono-label {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: var(--space-2);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
 }
 
-.mono-item p {
+.mono-card .mono-desc {
+  font-family: var(--font-body);
   font-size: 0.8rem;
-  color: var(--gray-500);
-  max-width: 220px;
-  margin: 0 auto;
+  line-height: 1.7;
+  color: var(--gray);
 }
 
-/* ─── Story Section ─── */
+.mono-card .mono-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ─── Story ─── */
 .story-content {
-  max-width: 640px;
+  max-width: 700px;
 }
 
 .story-content p + p {
-  margin-top: var(--space-4);
-}
-
-.story-content .highlight {
-  color: var(--accent);
-  font-style: normal;
+  margin-top: 1.25rem;
 }
 
 /* ─── Pricing ─── */
 .pricing-card {
-  max-width: 480px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 3rem auto 0;
   text-align: center;
-  padding: var(--space-16) var(--space-10);
-  background: var(--gray-900);
-  border: 1px solid var(--accent-dim);
+  padding: 4rem 2rem;
+  background: var(--black-card);
+  border: 1px solid var(--cyan-dim);
   position: relative;
-  overflow: hidden;
 }
 
 .pricing-card::before {
@@ -454,82 +530,83 @@ nav .cta-nav:hover {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  height: 3px;
+  background: var(--cyan);
 }
 
-.pricing-card .price {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(3rem, 8vw, 5rem);
-  line-height: 1;
-  color: var(--white);
-}
-
-.pricing-card .price span {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: var(--gray-500);
-  letter-spacing: 0.15em;
-  text-transform: lowercase;
-}
-
-.pricing-card .period {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--gray-500);
+.pricing-card .price-display {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 9rem);
   text-transform: uppercase;
-  margin-top: var(--space-2);
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.pricing-card .price-display .ron {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: var(--gray);
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  vertical-align: super;
+  margin-left: 0.25rem;
+}
+
+.pricing-card .price-period {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gray);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .pricing-card .includes {
-  margin-top: var(--space-10);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
 }
 
 .pricing-card .includes span {
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  color: var(--gray-300);
-  letter-spacing: 0.05em;
+  color: var(--gray);
+  letter-spacing: 0.02em;
 }
 
-.pricing-cta {
+.pricing-card .pricing-cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--black);
-  background: var(--accent);
-  padding: var(--space-4) var(--space-10);
+  background: var(--cyan);
+  padding: 0.9rem 2.5rem;
   text-decoration: none;
-  margin-top: var(--space-10);
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.pricing-cta:hover {
+.pricing-card .pricing-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(196, 168, 130, 0.3);
+  box-shadow: 0 8px 30px rgba(29, 255, 241, 0.35);
 }
 
 /* ─── Footer ─── */
 footer {
-  padding: var(--space-16) 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 4rem 0;
+  border-top: 1px solid var(--gray-darker);
 }
 
 .footer-inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: 1.5rem;
   align-items: center;
   text-align: center;
 }
@@ -543,41 +620,37 @@ footer {
 }
 
 .footer-inner .logo {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
   text-transform: uppercase;
-  color: var(--white);
+  letter-spacing: 0.05em;
 }
 
-.footer-inner .logo span {
-  color: var(--accent);
-  font-weight: 300;
-}
+.footer-inner .logo .cyan { color: var(--cyan); }
 
 .footer-inner .contact a {
-  color: var(--gray-500);
-  text-decoration: none;
+  font-family: var(--font-body);
   font-size: 0.8rem;
+  color: var(--gray);
+  text-decoration: none;
   transition: color 0.3s ease;
+  letter-spacing: 0.05em;
 }
 
-.footer-inner .contact a:hover {
-  color: var(--accent);
-}
+.footer-inner .contact a:hover { color: var(--cyan); }
 
 .footer-inner .copyright {
+  font-family: var(--font-body);
   font-size: 0.7rem;
-  color: var(--gray-700);
+  color: var(--gray-dark);
   letter-spacing: 0.05em;
 }
 
 /* ─── Animations ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -585,32 +658,11 @@ footer {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
-/* Line reveal animation */
-.line-reveal {
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width 1s var(--ease-out-expo);
-}
-
-.line-reveal.visible {
-  width: 60px;
-}
-
-/* Divider */
-.divider {
-  width: 60px;
-  height: 1px;
-  background: var(--accent);
-  margin: var(--space-8) 0;
-  opacity: 0.4;
-}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.4s; }
 
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
@@ -624,76 +676,13 @@ footer {
     transform: none;
   }
 }
-
-/* ─── Mobile Menu Toggle ─── */
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: var(--space-2);
-}
-
-@media (min-width: 768px) {
-  .menu-toggle { display: none; }
-}
-
-.menu-toggle span {
-  width: 22px;
-  height: 1.5px;
-  background: var(--white);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 4px);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  background: var(--black);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-10);
-}
-
-.mobile-menu.active {
-  display: flex;
-}
-
-.mobile-menu a {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gray-300);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.mobile-menu a:hover {
-  color: var(--accent);
-}
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-  <a href="#" class="logo">NOWA <span>SILUETA</span></a>
+<!-- Nav -->
+<nav id="navbar">
+  <a href="#" class="logo">NOWA <span class="cyan">SILUETA</span></a>
   <ul class="nav-links">
     <li><a href="#despre">Despre</a></li>
     <li><a href="#servicii">Servicii</a></li>
@@ -701,7 +690,7 @@ footer {
     <li><a href="#povestea">Povestea</a></li>
     <li><a href="#pret">Preț</a></li>
   </ul>
-  <a href="https://wa.me/40770480127" class="cta-nav" target="_blank" rel="noopener">Hai să vorbim</a>
+  <a href="https://wa.me/40770480127" class="cta-btn" target="_blank" rel="noopener">Hai să vorbim</a>
   <button class="menu-toggle" aria-label="Meniu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -714,161 +703,177 @@ footer {
   <a href="#monitorizare" onclick="toggleMenu()">Monitorizare</a>
   <a href="#povestea" onclick="toggleMenu()">Povestea</a>
   <a href="#pret" onclick="toggleMenu()">Preț</a>
-  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" style="color: var(--accent);">Hai să vorbim</a>
+  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" style="color: var(--cyan);">Hai să vorbim</a>
 </div>
 
 <!-- Hero -->
-<section class="hero container">
-  <div class="hero-content">
-    <div class="line-reveal"></div>
-    <h1 class="hero-title reveal">
-      NOWA<br><span class="accent">SILUETA</span>
+<section class="hero">
+  <div class="container">
+    <span class="section-num reveal">01</span>
+    <h1 class="display hero-title reveal reveal-delay-1">
+      NOWA<br><span class="cyan">SILUETA</span>
     </h1>
     <p class="hero-tagline reveal reveal-delay-2">
       Rezultatele apar când <em>renunți la scurtături</em> și alegi un program construit corect.
     </p>
-    <a href="#pret" class="hero-cta reveal reveal-delay-3">
-      Transformarea începe acum
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
+    <div class="hero-bottom reveal reveal-delay-3">
+      <a href="#pret" class="hero-cta">
+        TRANSFORMAREA ÎNCEPE ACUM
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <span class="hero-phone"><a href="tel:+40770480127">0770 480 127</a></span>
+    </div>
   </div>
 </section>
 
 <!-- Welcome -->
-<section id="despre" class="container">
-  <div class="welcome-grid">
-    <div class="welcome-text">
-      <span class="section-label reveal">01 — Despre</span>
-      <h2 class="reveal reveal-delay-1">Bine ai venit <span class="thin">în program</span></h2>
-      <div class="divider reveal reveal-delay-2"></div>
-      <p class="reveal reveal-delay-2">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
-      <p class="reveal reveal-delay-3">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
-      <p class="reveal reveal-delay-4">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
-      <div class="welcome-signature reveal reveal-delay-5">— Ayana</div>
+<section id="despre">
+  <div class="container">
+    <div class="welcome-grid">
+      <div>
+        <span class="section-num reveal">02</span>
+        <h2 class="display reveal reveal-delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">BINE AI VENIT<br>ÎN <span class="cyan">PROGRAMUL</span></h2>
+        <div class="body-text" style="margin-top: 2rem;">
+          <p class="reveal reveal-delay-2">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
+          <p class="reveal reveal-delay-3">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
+          <p class="reveal reveal-delay-4">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
+        </div>
+        <div class="signature reveal reveal-delay-5">by Ayana</div>
+      </div>
+      <div></div>
     </div>
-    <div></div>
   </div>
 </section>
 
 <!-- Services -->
-<section id="servicii" class="container">
-  <span class="section-label reveal">02 — Servicii</span>
-  <h2 class="reveal reveal-delay-1">Cum te ajut <span class="thin">să evoluezi</span></h2>
-  <div class="divider reveal reveal-delay-2"></div>
+<section id="servicii">
+  <div class="container">
+    <span class="section-num reveal">03</span>
+    <h2 class="display reveal reveal-delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">CUM TE AJUT<br>SĂ <span class="cyan">EVOLUEZI</span></h2>
 
-  <div class="services-grid" style="margin-top: var(--space-12);">
-    <div class="service-card reveal reveal-delay-1">
-      <div class="card-number">01</div>
-      <h3>Plan Alimentar Personalizat</h3>
-      <p>Un plan alimentar creat special pentru obiectivele tale, adaptat stilului tău de viață și preferințelor tale. Totul structurat clar, astfel încât să îți fie ușor să îl urmezi.</p>
-    </div>
+    <div class="services-grid" style="margin-top: 3rem;">
+      <div class="service-card reveal reveal-delay-1">
+        <span class="card-title"><span class="cyan-label">01 — Plan Alimentar</span>PERSONALIZAT, FIX PENTRU <span class="cyan">NEVOILE TALE</span></span>
+        <p class="card-desc">Un plan alimentar creat special pentru obiectivele tale, adaptat stilului tău de viață și preferințelor tale. Totul este structurat clar, astfel încât să îți fie ușor să îl urmezi și să obții rezultate dorite.</p>
+      </div>
 
-    <div class="service-card reveal reveal-delay-2">
-      <div class="card-number">02</div>
-      <h3>Nutriție Sănătoasă</h3>
-      <p>Accent pe nutriție echilibrată, nu pe restricții. Vei învăța să mănânci corect, să îți hrănești corpul și să îți menții energia pentru o transformare sustenabilă.</p>
-    </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="card-title"><span class="cyan-label">02 — Nutriție</span>SĂNĂTOS, NU DOAR <span class="cyan">SLAB</span></span>
+        <p class="card-desc">Accent pe nutriție echilibrată, nu pe restricții. Vei învăța să mănânci corect, să îți hrănești corpul și să îți menții energia, astfel încât transformarea ta să fie sustenabilă și sănătoasă.</p>
+      </div>
 
-    <div class="service-card reveal reveal-delay-3">
-      <div class="card-number">03</div>
-      <h3>Exerciții Explicate în Detaliu</h3>
-      <p>Primești explicații clare pentru fiecare exercițiu — tehnică, execuție corectă și integrare eficientă. Totul gândit pentru siguranță și progres real.</p>
-    </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="card-title"><span class="cyan-label">03 — Exerciții</span>EXPLICATE <span class="cyan">ÎN DETALIU</span></span>
+        <p class="card-desc">Primești explicații clare pentru fiecare exercițiu, astfel încât să înțelegi tehnica, execuția corectă. Totul este gândit pentru siguranță, eficiență și progres real.</p>
+      </div>
 
-    <div class="service-card reveal reveal-delay-4">
-      <div class="card-number">04</div>
-      <h3>Plan de Antrenament Structurat</h3>
-      <p>Programul este adaptat nivelului tău actual — fie că ești începătoare sau avansată — astfel încât să evoluezi treptat, într-un ritm sănătos și sustenabil.</p>
+      <div class="service-card reveal reveal-delay-4">
+        <span class="card-title"><span class="cyan-label">04 — Antrenament</span>PLAN STRUCTURAT PENTRU <span class="cyan">NIVELUL TĂU</span></span>
+        <p class="card-desc">Programul este adaptat nivelului tău actual — fie că ești începătoare sau avansată — astfel încât să evoluezi treptat, într-un ritm sănătos și sustenabil, cu rezultate vizibile.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Monitoring -->
-<section id="monitorizare" class="container">
-  <span class="section-label reveal">03 — Monitorizare</span>
-  <h2 class="reveal reveal-delay-1">Lucrăm ca o <span class="thin">echipă</span></h2>
-  <div class="divider reveal reveal-delay-2"></div>
+<section id="monitorizare">
+  <div class="container">
+    <span class="section-num reveal">06</span>
+    <h2 class="display reveal reveal-delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">MONITORIZARE<br>ȘI <span class="cyan">SUPORT</span></h2>
 
-  <div class="monitor-grid">
-    <div class="mono-item reveal reveal-delay-1">
-      <div class="mono-icon">📹</div>
-      <h4>Evaluare Video</h4>
-      <p>Îți analizez execuția exercițiilor prin video, corectând tehnică, postura și intensitatea.</p>
-    </div>
-    <div class="mono-item reveal reveal-delay-2">
-      <div class="mono-icon">📸</div>
-      <h4>Suport Real</h4>
-      <p>Îmi trimiți poze cu mesele tale, iar eu te ghidez în timp real ca să rămâi pe direcția corectă.</p>
-    </div>
-    <div class="mono-item reveal reveal-delay-3">
-      <div class="mono-icon">💬</div>
-      <h4>Disponibilă 24/7</h4>
-      <p>Suport continuu pentru motivație, întrebări și consecvență — oricând ai nevoie.</p>
+    <div class="monitor-grid">
+      <div class="mono-card reveal reveal-delay-1">
+        <span class="mono-icon">📹</span>
+        <div class="mono-label">EVALUARE VIDEO</div>
+        <p class="mono-desc">Îți analizez execuția exercițiilor prin video, pentru a corecta tehnica, postura și intensitatea.</p>
+      </div>
+      <div class="mono-card reveal reveal-delay-2">
+        <span class="mono-icon">💬</span>
+        <div class="mono-label">SUPORT 24/7</div>
+        <p class="mono-desc">Sunt alături de tine 24/7 pentru suport, motivație și consecvență.</p>
+      </div>
+      <div class="mono-card reveal reveal-delay-3">
+        <span class="mono-icon">📸</span>
+        <div class="mono-label">GHIDARE REAL</div>
+        <p class="mono-desc">Îmi trimiți poze cu mesele tale, iar eu te ghidez în timp real ca să rămâi pe direcția corectă.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Story -->
-<section id="povestea" class="container">
-  <div class="story-content">
-    <span class="section-label reveal">04 — Povestea</span>
-    <h2 class="reveal reveal-delay-1">Povestea <span class="thin">mea</span></h2>
-    <div class="divider reveal reveal-delay-2"></div>
-    <p class="reveal reveal-delay-2">Numele meu este <span class="highlight">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
-    <p class="reveal reveal-delay-3">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="highlight">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
-    <p class="reveal reveal-delay-4">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="highlight">evoluția reală vine din consecvență și mindset</span>.</p>
-    <p class="reveal reveal-delay-5">Tot ce am învățat vreau acum să dau mai departe.</p>
+<section id="povestea">
+  <div class="container">
+    <div class="story-content">
+      <span class="section-num reveal">07</span>
+      <h2 class="display reveal reveal-delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">POVESTEA <span class="cyan">MEA</span></h2>
+      <div class="body-text" style="margin-top: 2rem;">
+        <p class="reveal reveal-delay-2">Numele meu este <span class="cyan">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
+        <p class="reveal reveal-delay-3">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="cyan">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
+        <p class="reveal reveal-delay-4">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="cyan">evoluția reală vine din consecvență și mindset</span>.</p>
+        <p class="reveal reveal-delay-5">Tot ce am învățat vreau acum să dau mai departe.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Pricing -->
-<section id="pret" class="container" style="padding-bottom: var(--space-32);">
-  <span class="section-label reveal" style="text-align:center;display:block;">05 — Preț</span>
-  <h2 class="reveal reveal-delay-1" style="text-align:center;">Hai să lucrăm <span class="thin">împreună</span></h2>
-
-  <div class="pricing-card reveal reveal-delay-2" style="margin-top: var(--space-12);">
-    <div class="price">350 <span>ron</span></div>
-    <div class="period">pe lună</div>
-    <div class="includes">
-      <span>Plan alimentar personalizat</span>
-      <span>Plan de antrenament structurat</span>
-      <span>Evaluare video a exercițiilor</span>
-      <span>Ghidare nutrițională continuă</span>
-      <span>Suport 24/7</span>
+<section id="pret">
+  <div class="container">
+    <div class="pricing-card reveal">
+      <h2 class="display" style="font-size: clamp(1.5rem, 4vw, 2.5rem);">HAI SĂ LUCRĂM <span class="cyan">ÎMPREUNĂ</span></h2>
+      <div class="price-display" style="margin-top: 1.5rem;">
+        350<span class="ron">ron</span>
+      </div>
+      <div class="price-period">RON / LUNĂ</div>
+      <div class="includes">
+        <span>Plan alimentar personalizat</span>
+        <span>Plan de antrenament structurat</span>
+        <span>Evaluare video a exercițiilor</span>
+        <span>Ghidare nutrițională continuă</span>
+        <span>Suport 24/7</span>
+      </div>
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="pricing-cta" target="_blank" rel="noopener">
+        HAI SĂ FACEM TREABA!
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
     </div>
-    <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="pricing-cta" target="_blank" rel="noopener">
-      Hai să facem treaba
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="container">
-  <div class="footer-inner">
-    <div class="logo">NOWA <span>SILUETA</span></div>
-    <div class="contact">
-      <a href="tel:+40770480127">0770 480 127</a>
-      &nbsp;·&nbsp;
-      <a href="https://wa.me/40770480127" target="_blank" rel="noopener">WhatsApp</a>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="logo">NOWA <span class="cyan">SILUETA</span></div>
+      <div class="contact">
+        <a href="tel:+40770480127">0770 480 127</a> ·
+        <a href="https://wa.me/40770480127" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <div class="copyright">© 2025 NOWA SILUETA — by Ayana</div>
     </div>
-    <div class="copyright">© 2025 NOWA SILUETA — by Ayana</div>
   </div>
 </footer>
 
 <script>
-// ─── Scroll Reveal ───
+// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     }
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('.reveal, .line-reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ─── Mobile Menu ───
+// Nav scroll bg
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Mobile menu
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const toggle = document.querySelector('.menu-toggle');
@@ -876,16 +881,6 @@ function toggleMenu() {
   toggle.classList.toggle('active');
   document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
 }
-
-// ─── Nav background on scroll ───
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    nav.style.background = 'rgba(12,12,12,0.95)';
-  } else {
-    nav.style.background = '';
-  }
-}, { passive: true });
 </script>
 
 </body>
