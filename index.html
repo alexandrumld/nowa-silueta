@@ -49,12 +49,9 @@ body {
 }
 
 ::selection { background: var(--cyan); color: var(--bg); }
-
 a { color: inherit; }
 
-/* ═══════════════════════════════════════════
-   NAVIGATION
-   ═══════════════════════════════════════════ */
+/* ═══ NAVIGATION ═══ */
 nav {
   position: fixed;
   top: 0;
@@ -69,7 +66,7 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(10,10,10,0.9);
+  background: rgba(10,10,10,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -82,6 +79,8 @@ nav.scrolled {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
+  display: flex;
+  gap: 0.3em;
 }
 
 .nav-logo .cyan { color: var(--cyan); }
@@ -131,7 +130,6 @@ nav.scrolled {
   display: inline-block;
 }
 
-/* Mobile toggle */
 .menu-toggle {
   display: flex;
   flex-direction: column;
@@ -176,43 +174,27 @@ nav.scrolled {
   letter-spacing: 0.04em;
   color: var(--gray);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .mobile-menu a:hover { color: var(--cyan); }
 
-/* ═══════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════ */
+/* ═══ HERO ═══ */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
-  padding: 8rem 0 4rem;
+  padding-top: 5rem;
   overflow: hidden;
 }
 
-/* Atmospheric glow */
-.hero::before {
-  content: '';
+.hero-glow {
   position: absolute;
-  top: 15%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(29,255,241,0.07) 0%, transparent 55%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -10%;
-  left: -15%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(29,255,241,0.04) 0%, transparent 50%);
+  top: 20%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(29,255,241,0.06) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -220,11 +202,94 @@ nav.scrolled {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
   position: relative;
   z-index: 1;
 }
 
-@media (min-width: 768px) { .hero-inner { padding: 0 3rem; } }
+@media (min-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.hero-content {
+  order: 2;
+}
+
+@media (min-width: 900px) {
+  .hero-content { order: 1; }
+}
+
+.hero-photo {
+  order: 1;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .hero-photo { order: 2; }
+}
+
+.hero-photo-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.hero-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.05) brightness(0.95);
+}
+
+/* Cyan offset border - echoes the PDF */
+.hero-photo-inner::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 2px solid var(--cyan);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Placeholder when no image */
+.hero-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-raised) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-photo-placeholder svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--gray-dark);
+  fill: none;
+}
+
+.hero-photo-placeholder span {
+  font-family: var(--f-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gray-dark);
+}
 
 .hero-tag {
   font-family: var(--f-body);
@@ -252,38 +317,37 @@ nav.scrolled {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.85;
-  font-size: clamp(5.5rem, 20vw, 15rem);
+  line-height: 0.9;
+  font-size: clamp(4rem, 12vw, 7rem);
   color: var(--white);
-  margin-bottom: 1.5rem;
-  position: relative;
+  margin-bottom: 0.5rem;
 }
 
-.hero-title .silueta {
+.hero-title .cyan-line {
   display: block;
   color: var(--cyan);
   position: relative;
 }
 
-/* Chromatic offset effect like the PDF */
-.hero-title .silueta::before {
-  content: 'SILUETA';
+.hero-title .cyan-line::before {
+  content: attr(data-text);
   position: absolute;
   top: 3px;
   left: 3px;
   color: var(--white);
+  opacity: 0.1;
   z-index: -1;
-  opacity: 0.15;
 }
 
 .hero-subtitle {
   font-family: var(--f-body);
   font-weight: 300;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
   line-height: 1.8;
   color: var(--gray);
-  max-width: 440px;
-  margin-bottom: 3rem;
+  max-width: 420px;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-subtitle em {
@@ -295,7 +359,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 @media (min-width: 480px) {
@@ -346,14 +410,11 @@ nav.scrolled {
 .hero-phone a {
   color: var(--gray);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .hero-phone a:hover { color: var(--cyan); }
 
-/* ═══════════════════════════════════════════
-   SECTIONS — GENERAL
-   ═══════════════════════════════════════════ */
+/* ═══ SECTIONS ═══ */
 .section-wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -388,8 +449,8 @@ nav.scrolled {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  line-height: 0.85;
-  font-size: clamp(2.8rem, 8vw, 5rem);
+  line-height: 0.9;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
   color: var(--white);
   margin-bottom: 2rem;
 }
@@ -405,13 +466,10 @@ nav.scrolled {
 }
 
 .body-text + .body-text { margin-top: 1.25rem; }
-
 .body-text .cyan { color: var(--cyan); }
 .body-text .white { color: var(--white); }
 
-/* ═══════════════════════════════════════════
-   SECTION: WELCOME
-   ═══════════════════════════════════════════ */
+/* ═══ WELCOME ═══ */
 .welcome {
   padding: 8rem 0;
   position: relative;
@@ -433,11 +491,63 @@ nav.scrolled {
   gap: 3rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .welcome-grid {
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 5rem;
+    align-items: start;
   }
+}
+
+.welcome-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--surface);
+}
+
+.welcome-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.welcome-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, var(--bg), transparent);
+  pointer-events: none;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-raised) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.photo-placeholder svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--gray-dark);
+  fill: none;
+}
+
+.photo-placeholder span {
+  font-family: var(--f-body);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gray-dark);
 }
 
 .signature {
@@ -449,9 +559,7 @@ nav.scrolled {
   margin-top: 2.5rem;
 }
 
-/* ═══════════════════════════════════════════
-   SECTION: SERVICES
-   ═══════════════════════════════════════════ */
+/* ═══ SERVICES ═══ */
 .services {
   padding: 8rem 0;
   position: relative;
@@ -465,18 +573,6 @@ nav.scrolled {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gray-dark), transparent);
-}
-
-/* Atmospheric glow */
-.services::after {
-  content: '';
-  position: absolute;
-  top: 30%;
-  left: -20%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(29,255,241,0.04) 0%, transparent 50%);
-  pointer-events: none;
 }
 
 .services-list {
@@ -496,17 +592,10 @@ nav.scrolled {
 }
 
 @media (min-width: 768px) {
-  .service-item {
-    grid-template-columns: 3rem 1fr 2fr;
-    gap: 2rem 3rem;
-  }
+  .service-item { grid-template-columns: 3rem 1fr 2fr; gap: 2rem 3rem; }
 }
 
-.
-
-.service-item:first-child {
-  border-top: 1px solid var(--gray-dark);
-}
+.service-item:first-child { border-top: 1px solid var(--gray-dark); }
 
 .service-num {
   font-family: var(--f-display);
@@ -539,9 +628,7 @@ nav.scrolled {
   .service-desc { grid-column: 1 / -1; }
 }
 
-/* ═══════════════════════════════════════════
-   SECTION: MONITORING
-   ═══════════════════════════════════════════ */
+/* ═══ MONITORING ═══ */
 .monitoring {
   padding: 8rem 0;
   position: relative;
@@ -583,11 +670,11 @@ nav.scrolled {
 
 .monitor-cell .monitor-label {
   font-family: var(--f-display);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: var(--white);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .monitor-cell .monitor-label .cyan { color: var(--cyan); }
@@ -599,7 +686,6 @@ nav.scrolled {
   color: var(--gray-muted);
 }
 
-/* CTA strip inside monitoring */
 .monitor-cta {
   background: var(--cyan);
   color: var(--bg);
@@ -607,11 +693,7 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
-}
-
-.monitor-cta:hover {
-  background: #1ae8db;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -626,9 +708,7 @@ nav.scrolled {
   text-align: center;
 }
 
-/* ═══════════════════════════════════════════
-   SECTION: STORY
-   ═══════════════════════════════════════════ */
+/* ═══ STORY ═══ */
 .story {
   padding: 8rem 0;
   position: relative;
@@ -644,13 +724,42 @@ nav.scrolled {
   background: linear-gradient(90deg, transparent, var(--gray-dark), transparent);
 }
 
-.story-content {
-  max-width: 680px;
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
 }
 
-/* ═══════════════════════════════════════════
-   SECTION: PRICING
-   ═══════════════════════════════════════════ */
+@media (min-width: 900px) {
+  .story-layout {
+    grid-template-columns: 2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+}
+
+.story-content { max-width: 700px; }
+.story-content p + p { margin-top: 1.25rem; }
+
+.story-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  background: var(--surface);
+}
+
+.story-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, var(--bg), transparent);
+  pointer-events: none;
+}
+
+/* ═══ PRICING ═══ */
 .pricing {
   padding: 8rem 0;
   position: relative;
@@ -667,7 +776,7 @@ nav.scrolled {
 }
 
 .pricing-card {
-  max-width: 560px;
+  max-width: 500px;
   margin: 4rem auto 0;
   text-align: center;
   padding: 5rem 3rem 4rem;
@@ -676,7 +785,6 @@ nav.scrolled {
   overflow: hidden;
 }
 
-/* Top cyan border */
 .pricing-card::before {
   content: '';
   position: absolute;
@@ -687,7 +795,6 @@ nav.scrolled {
   background: var(--cyan);
 }
 
-/* Glow from top */
 .pricing-card::after {
   content: '';
   position: absolute;
@@ -696,7 +803,7 @@ nav.scrolled {
   transform: translateX(-50%);
   width: 300px;
   height: 150px;
-  background: radial-gradient(circle, rgba(29,255,241,0.12) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(29,255,241,0.1) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -761,9 +868,7 @@ nav.scrolled {
   margin-right: 0.5rem;
 }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════ */
+/* ═══ FOOTER ═══ */
 footer {
   padding: 4rem 0;
   border-top: 1px solid var(--gray-dark);
@@ -803,7 +908,6 @@ footer {
   font-size: 0.75rem;
   color: var(--gray-muted);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .footer-contact a:hover { color: var(--cyan); }
@@ -815,22 +919,13 @@ footer {
   letter-spacing: 0.05em;
 }
 
-/* ═══════════════════════════════════════════
-   ANIMATIONS
-/* ─── Animation (GSAP-driven) ─── */
-/* Elements start invisible; GSAP animates them in on scroll. */
-/* Elements animated by GSAP — start visible, GSAP controls entrance.
-   If JS fails, the page is still fully visible. */
-/* Elements animate in via GSAP .from() — they start visible in CSS, GSAP animates from opacity:0 */
-
-/* ─── Reduced Motion ─── */
+/* ═══ REDUCED MOTION ═══ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-glow { animation: none; }
 }
 </style>
 </head>
@@ -862,52 +957,64 @@ footer {
   <a href="https://wa.me/40770480127" target="_blank" rel="noopener" style="color: var(--cyan);">Hai să vorbim</a>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-tag">by Ayana</div>
-    <h1 class="hero-title">
-      NOWA<br><span class="silueta">SILUETA</span>
-    </h1>
-    <p class="hero-subtitle">
-      Rezultatele apar când <em>renunți la scurtături</em> și alegi un program construit corect.
-    </p>
-    <div class="hero-actions">
-      <a href="#pret" class="btn-primary">
-        Transformarea începe acum
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-      <span class="hero-phone"><a href="tel:+40770480127">0770 480 127</a></span>
+    <div class="hero-content">
+      <div class="hero-tag">by Ayana</div>
+      <h1 class="hero-title">
+        NOWA<br><span class="cyan-line" data-text="SILUETA">SILUETA</span>
+      </h1>
+      <p class="hero-subtitle">
+        Rezultatele apar când <em>renunți la scurtături</em> și alegi un program construit corect.
+      </p>
+      <div class="hero-actions">
+        <a href="#pret" class="btn-primary">
+          Transformarea începe acum
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <span class="hero-phone"><a href="tel:+40770480127">0770 480 127</a></span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-inner">
+        <!-- Replace src with her photo: <img src="images/hero.jpg" alt="Ayana - NOWA SILUETA"> -->
+        <div class="hero-photo-placeholder">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          <span>Foto Ayana</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     WELCOME
-     ═══════════════════════════════════════════ -->
+<!-- ═══ WELCOME ═══ -->
 <section class="welcome" id="despre">
   <div class="section-wrap">
     <div class="section-tag">Despre</div>
     <div class="welcome-grid">
       <div>
         <h2 class="section-heading">BINE AI VENIT<br>ÎN <span class="cyan">PROGRAMUL</span></h2>
+        <div style="margin-top: 2rem;">
+          <p class="body-text">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
+          <p class="body-text">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
+          <p class="body-text">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
+          <div class="signature">— Ayana</div>
+        </div>
       </div>
-      <div>
-        <p class="body-text">Înainte de toate, felicitări pentru decizia de a începe această transformare. A recunoaște că ai nevoie de schimbare și a alege să investești în tine este un act de curaj și maturitate.</p>
-        <p class="body-text">Ai făcut un pas important spre o versiune mai puternică și mai echilibrată a ta, iar acest proces va avea un impact real în evoluția ta personală.</p>
-        <p class="body-text">Îți mulțumesc pentru încrederea de a mă alege să te ghidez. Sunt aici să îți ofer structură, susținere și un parcurs construit corect — pentru rezultate autentice și durabile.</p>
-        <div class="signature">— Ayana</div>
+      <div class="welcome-photo">
+        <!-- Replace src: <img src="images/welcome.jpg" alt="Ayana coaching"> -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          <span>Foto coaching</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     SERVICES
-     ═══════════════════════════════════════════ -->
+<!-- ═══ SERVICES ═══ -->
 <section class="services" id="servicii">
   <div class="section-wrap">
     <div class="section-tag">Servicii</div>
@@ -941,9 +1048,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     MONITORING
-     ═══════════════════════════════════════════ -->
+<!-- ═══ MONITORING ═══ -->
 <section class="monitoring" id="monitorizare">
   <div class="section-wrap">
     <div class="section-tag">Monitorizare</div>
@@ -965,34 +1070,37 @@ footer {
         <div class="monitor-label">GHIDARE <span class="cyan">REAL</span></div>
         <div class="monitor-text">Trimite-mi poze cu mesele tale și te ghidez instant — rămâi pe direcția corectă pas cu pas.</div>
       </div>
-      <div class="monitor-cta">
-        <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-          <div class="monitor-cta-text">HAI SĂ FACEM TREABA! →</div>
-        </a>
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" class="monitor-cta">
+        <div class="monitor-cta-text">HAI SĂ FACEM TREABA! →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORY ═══ -->
+<section class="story" id="povestea">
+  <div class="section-wrap">
+    <div class="section-tag">Povestea</div>
+    <h2 class="section-heading" style="margin-bottom: 2.5rem;">POVESTEA <span class="cyan">MEA</span></h2>
+    <div class="story-layout">
+      <div class="story-content">
+        <p class="body-text">Numele meu este <span class="cyan">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
+        <p class="body-text">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="cyan">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
+        <p class="body-text">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="cyan">evoluția reală vine din consecvență și mindset</span>.</p>
+        <p class="body-text">Tot ce am învățat vreau acum să dau mai departe.</p>
+      </div>
+      <div class="story-photo">
+        <!-- Replace src: <img src="images/story.jpg" alt="Ayana povestea"> -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          <span>Foto povestea</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     STORY
-     ═══════════════════════════════════════════ -->
-<section class="story" id="povestea">
-  <div class="section-wrap">
-    <div class="section-tag">Povestea</div>
-    <h2 class="section-heading" style="margin-bottom: 2.5rem;">POVESTEA <span class="cyan">MEA</span></h2>
-    <div class="story-content">
-      <p class="body-text">Numele meu este <span class="cyan">Moldovan Ayana Maria</span> și am 20 de ani. Sunt studentă la două facultăți și o persoană care funcționează prin organizare, disciplină și dorința de a duce lucrurile până la capăt.</p>
-      <p class="body-text">Sportul face parte din mine încă din copilărie: de la dans, badminton și sporturi de echipă, până la <span class="cyan">canotaj, unde am devenit multiplă campioană națională</span>. Fiecare etapă m-a format — grație, strategie, colaborare, rezistență și putere mentală.</p>
-      <p class="body-text">Astăzi, fitnessul este spațiul în care îmi regăsesc echilibrul și energia. Transformările prin care am trecut — de la „grasă", la „slabă", la versiunea actuală — sunt dovada că <span class="cyan">evoluția reală vine din consecvență și mindset</span>.</p>
-      <p class="body-text">Tot ce am învățat vreau acum să dau mai departe.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     PRICING
-     ═══════════════════════════════════════════ -->
+<!-- ═══ PRICING ═══ -->
 <section class="pricing" id="pret">
   <div class="section-wrap">
     <div class="section-tag">Preț</div>
@@ -1017,9 +1125,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">NOWA <span class="cyan">SILUETA</span></div>
@@ -1033,14 +1139,13 @@ footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    // GSAP didn't load — elements are already visible, nothing to do
-    return;
-  }
+  // GSAP fallback — content always visible
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
 
   // ─── Nav scroll bg ───
   const nav = document.getElementById('navbar');
@@ -1057,111 +1162,72 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
   };
 
-  if (prefersReducedMotion) {
-    // No animations — everything already visible in CSS, just skip GSAP
-    return;
-  }
-
-  // ─── Hero entrance — cinematic stagger ───
+  // ─── Hero entrance ───
   const heroTl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.2 } });
   heroTl
     .from('.hero-tag', { y: 30, opacity: 0, duration: 0.8 }, 0.3)
-    .from('.hero-title', { y: 80, opacity: 0, duration: 1.4 }, 0.5)
-    .from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.9 }, 1.0)
-    .from('.hero-actions', { y: 20, opacity: 0, duration: 0.8 }, 1.3)
-    .from('.hero-phone', { opacity: 0, duration: 0.6 }, 1.5);
+    .from('.hero-title', { y: 60, opacity: 0, duration: 1.2 }, 0.5)
+    .from('.hero-subtitle', { y: 25, opacity: 0, duration: 0.9 }, 0.9)
+    .from('.hero-actions', { y: 20, opacity: 0, duration: 0.8 }, 1.1)
+    .from('.hero-photo-inner', { y: 40, opacity: 0, scale: 0.95, duration: 1.4, ease: 'expo.out' }, 0.7);
 
-  // ─── Scroll-triggered sections ───
-  gsap.utils.toArray('.section-tag').forEach(tag => {
-    gsap.from(tag, {
-      scrollTrigger: { trigger: tag, start: 'top 85%', toggleActions: 'play none none none' },
-      x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
-    });
+  // ─── Scroll reveals ───
+  gsap.utils.toArray('.section-tag').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, x: -30, opacity: 0, duration: 0.8, ease: 'power3.out' });
   });
 
-  gsap.utils.toArray('.section-heading').forEach(heading => {
-    gsap.from(heading, {
-      scrollTrigger: { trigger: heading, start: 'top 85%', toggleActions: 'play none none none' },
-      y: 60, opacity: 0, duration: 1.2, ease: 'expo.out'
-    });
+  gsap.utils.toArray('.section-heading').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, y: 50, opacity: 0, duration: 1.1, ease: 'expo.out' });
   });
 
-  gsap.utils.toArray('.body-text').forEach((p, i) => {
-    gsap.from(p, {
-      scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' },
-      y: 25, opacity: 0, duration: 0.9, ease: 'power3.out',
-      delay: i > 0 ? 0 : 0.15
-    });
+  gsap.utils.toArray('.body-text').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 88%' }, y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
   });
 
-  gsap.from('.signature', {
-    scrollTrigger: { trigger: '.signature', start: 'top 90%' },
-    x: -30, opacity: 0, duration: 0.8, ease: 'power3.out'
-  });
+  gsap.from('.signature', { scrollTrigger: { trigger: '.signature', start: 'top 90%' }, x: -25, opacity: 0, duration: 0.8, ease: 'power3.out' });
 
-  // ─── Service items — staggered slide-in with line ───
+  // Welcome photo
+  gsap.from('.welcome-photo', { scrollTrigger: { trigger: '.welcome-photo', start: 'top 80%' }, y: 30, opacity: 0, duration: 1, ease: 'expo.out' });
+
+  // Service items staggered
   gsap.utils.toArray('.service-item').forEach((item, i) => {
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: item, start: 'top 85%', toggleActions: 'play none none none' }
-    });
-    tl.from(item, {
-      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.1
-    });
+    gsap.from(item, { scrollTrigger: { trigger: item, start: 'top 85%' }, y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: i * 0.08 });
   });
 
-  // ─── Monitor cells — staggered scale-in ───
+  // Monitor cells staggered
   gsap.utils.toArray('.monitor-cell').forEach((cell, i) => {
-    gsap.from(cell, {
-      scrollTrigger: { trigger: cell, start: 'top 88%', toggleActions: 'play none none none' },
-      y: 30, opacity: 0, scale: 0.96, duration: 0.7, ease: 'power3.out',
-      delay: i * 0.12
-    });
+    gsap.from(cell, { scrollTrigger: { trigger: cell, start: 'top 88%' }, y: 25, opacity: 0, scale: 0.97, duration: 0.6, ease: 'power3.out', delay: i * 0.1 });
   });
 
-  // ─── Monitor CTA — slide up with emphasis ───
-  gsap.from('.monitor-cta', {
-    scrollTrigger: { trigger: '.monitor-cta', start: 'top 88%' },
-    y: 40, opacity: 0, duration: 0.9, ease: 'expo.out'
-  });
+  gsap.from('.monitor-cta', { scrollTrigger: { trigger: '.monitor-cta', start: 'top 88%' }, y: 30, opacity: 0, duration: 0.8, ease: 'expo.out' });
 
-  // ─── Pricing card — cinematic entrance ───
-  gsap.from('.pricing-card', {
-    scrollTrigger: { trigger: '.pricing-card', start: 'top 82%' },
-    y: 60, opacity: 0, scale: 0.95, duration: 1.2, ease: 'expo.out'
-  });
+  // Story photo
+  gsap.from('.story-photo', { scrollTrigger: { trigger: '.story-photo', start: 'top 80%' }, y: 30, opacity: 0, duration: 1, ease: 'expo.out' });
 
-  gsap.from('.pricing-amount', {
-    scrollTrigger: { trigger: '.pricing-card', start: 'top 80%' },
-    y: 40, opacity: 0, duration: 1.0, ease: 'expo.out', delay: 0.3
-  });
+  // Pricing card
+  gsap.from('.pricing-card', { scrollTrigger: { trigger: '.pricing-card', start: 'top 82%' }, y: 50, opacity: 0, scale: 0.96, duration: 1.1, ease: 'expo.out' });
+  gsap.from('.pricing-amount', { scrollTrigger: { trigger: '.pricing-card', start: 'top 80%' }, y: 30, opacity: 0, duration: 0.9, ease: 'expo.out', delay: 0.25 });
 
-  // ─── Service item hover — title color shift + indent ───
+  // ─── Hover interactions ───
   document.querySelectorAll('.service-item').forEach(item => {
     const title = item.querySelector('.service-title');
     if (!title) return;
-
     item.addEventListener('mouseenter', () => {
       gsap.to(item, { paddingLeft: '1rem', duration: 0.35, ease: 'power2.out' });
       gsap.to(title, { color: '#1DFFF1', duration: 0.3, ease: 'power2.out' });
     });
-
     item.addEventListener('mouseleave', () => {
       gsap.to(item, { paddingLeft: 0, duration: 0.5, ease: 'power3.out' });
       gsap.to(title, { color: '#FFFFFF', duration: 0.4, ease: 'power2.out' });
     });
   });
 
-  // ─── Monitor cells — subtle lift on hover ───
   document.querySelectorAll('.monitor-cell').forEach(cell => {
-    cell.addEventListener('mouseenter', () => {
-      gsap.to(cell, { y: -4, duration: 0.35, ease: 'power2.out' });
-    });
-    cell.addEventListener('mouseleave', () => {
-      gsap.to(cell, { y: 0, duration: 0.5, ease: 'power3.out' });
-    });
+    cell.addEventListener('mouseenter', () => gsap.to(cell, { y: -4, duration: 0.35, ease: 'power2.out' }));
+    cell.addEventListener('mouseleave', () => gsap.to(cell, { y: 0, duration: 0.5, ease: 'power3.out' }));
   });
 
-  // ─── CTA buttons — magnetic pull ───
+  // CTA magnetic
   document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -1174,38 +1240,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ─── Nav links — underline scale on hover ───
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    const after = link.querySelector('::after'); // can't select pseudo, use gsap on the link itself
-    link.addEventListener('mouseenter', () => {
-      gsap.to(link, { color: '#1DFFF1', duration: 0.25, ease: 'power2.out' });
-    });
-    link.addEventListener('mouseleave', () => {
-      gsap.to(link, { color: '#5A5A5A', duration: 0.35, ease: 'power2.out' });
-    });
-  });
-
-  // ─── Hero glow — subtle parallax on mouse ───
+  // Hero glow parallax
   const glow = document.querySelector('.hero-glow');
   if (glow) {
     window.addEventListener('mousemove', (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 30;
       const y = (e.clientY / window.innerHeight - 0.5) * 30;
-      gsap.to(glow, { x: x, y: y, duration: 1.2, ease: 'power2.out' });
+      gsap.to(glow, { x, y, duration: 1.2, ease: 'power2.out' });
     });
   }
 
-  // ─── Smooth scroll for anchor links ───
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        gsap.to(window, {
-          scrollTo: { y: target, offsetY: 80 },
-          duration: 1.2,
-          ease: 'expo.inOut'
-        });
+        gsap.to(window, { scrollTo: { y: target, offsetY: 80 }, duration: 1.2, ease: 'expo.inOut' });
       }
     });
   });
