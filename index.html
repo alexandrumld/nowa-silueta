@@ -6,7 +6,6 @@
 <title>NOWA SILUETA — by Ayana</title>
 <meta name="description" content="Rezultatele apar când renunți la scurtături și alegi un program construit corect. Coaching personal fitness & nutriție by Ayana.">
 <meta name="theme-color" content="#0A0A0A">
-<script>document.documentElement.classList.add('js-ready');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -822,23 +821,7 @@ footer {
 /* Elements start invisible; GSAP animates them in on scroll. */
 /* Elements animated by GSAP — start visible, GSAP controls entrance.
    If JS fails, the page is still fully visible. */
-.js-ready .section-tag,
-.js-ready .section-heading,
-.js-ready .body-text,
-.js-ready .signature,
-.js-ready .service-item,
-.js-ready .monitor-cell,
-.js-ready .monitor-cta,
-.js-ready .pricing-card,
-.js-ready .pricing-amount,
-.js-ready .hero-tag,
-.js-ready .hero-title,
-.js-ready .hero-subtitle,
-.js-ready .hero-actions,
-.js-ready .hero-phone {
-  opacity: 0;
-  transform: translateY(20px);
-}
+/* Elements animate in via GSAP .from() — they start visible in CSS, GSAP animates from opacity:0 */
 
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
@@ -846,23 +829,6 @@ footer {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .js-ready .section-tag,
-  .js-ready .section-heading,
-  .js-ready .body-text,
-  .js-ready .signature,
-  .js-ready .service-item,
-  .js-ready .monitor-cell,
-  .js-ready .monitor-cta,
-  .js-ready .pricing-card,
-  .js-ready .pricing-amount,
-  .js-ready .hero-tag,
-  .js-ready .hero-title,
-  .js-ready .hero-subtitle,
-  .js-ready .hero-actions,
-  .js-ready .hero-phone {
-    opacity: 1 !important;
-    transform: none !important;
   }
   .hero-glow { animation: none; }
 }
@@ -1070,11 +1036,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    // GSAP didn't load — show everything immediately
-    document.querySelectorAll('.section-tag, .section-heading, .body-text, .signature, .service-item, .monitor-cell, .monitor-cta, .pricing-card, .pricing-amount, .hero-tag, .hero-title, .hero-subtitle, .hero-actions, .hero-phone').forEach(el => {
-      el.style.opacity = 1;
-      el.style.transform = 'none';
-    });
+    // GSAP didn't load — elements are already visible, nothing to do
     return;
   }
 
@@ -1096,11 +1058,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (prefersReducedMotion) {
-    // No animations — just make everything visible
-    document.querySelectorAll('.section-tag, .section-heading, .body-text, .signature, .service-item, .monitor-cell, .monitor-cta, .pricing-card, .pricing-amount, .hero-tag, .hero-title, .hero-subtitle, .hero-actions, .hero-phone').forEach(el => {
-      el.style.opacity = 1;
-      el.style.transform = 'none';
-    });
+    // No animations — everything already visible in CSS, just skip GSAP
     return;
   }
 
