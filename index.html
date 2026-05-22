@@ -6,12 +6,20 @@
 <title>NOWA SILUETA — by Ayana</title>
 <meta name="description" content="Rezultatele apar când renunți la scurtături și alegi un program construit corect. Coaching personal fitness & nutriție by Ayana.">
 <meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="NOWA SILUETA — by Ayana">
+<meta property="og:description" content="Rezultatele apar când renunți la scurtături. Coaching personal fitness & nutriție.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexandrumld.github.io/nowa-silueta/">
+<meta property="og:locale" content="ro_RO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NOWA SILUETA — by Ayana">
+<meta name="twitter:description" content="Coaching personal fitness & nutriție by Ayana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,11 +33,35 @@
   --cyan-08: rgba(29, 255, 241, 0.08);
   --cyan-04: rgba(29, 255, 241, 0.04);
   --gray: #ACACAC;
-  --gray-dark: #3A3A3A;
-  --gray-muted: #5A5A5A;
+  --gray-dark: #7A7A7A;
+  --gray-muted: #8A8A8A;
 
   --f-display: 'Anton', Impact, sans-serif;
   --f-body: 'Poppins', sans-serif;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 1rem 1.5rem;
+  font-family: var(--f-body);
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
 }
 
 html {
@@ -463,6 +495,8 @@ nav.scrolled {
   font-size: 0.9rem;
   line-height: 1.85;
   color: var(--gray);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .body-text + .body-text { margin-top: 1.25rem; }
@@ -928,12 +962,18 @@ footer {
   }
 }
 </style>
+<noscript>
+<style>
+.hero-content,.section-wrap,.pricing-card,.monitor-grid,.services-list,.story-layout{opacity:1!important;transform:none!important}
+</style>
+</noscript>
 </head>
 <body>
 
 <!-- Navigation -->
+<a href="#content" class="skip-link">Sari la conținut</a>
 <nav id="navbar">
-  <a href="#" class="nav-logo">NOWA <span class="cyan">SILUETA</span></a>
+  <a href="#hero" class="nav-logo">NOWA <span class="cyan">SILUETA</span></a>
   <ul class="nav-links">
     <li><a href="#despre">Despre</a></li>
     <li><a href="#servicii">Servicii</a></li>
@@ -941,24 +981,25 @@ footer {
     <li><a href="#povestea">Povestea</a></li>
     <li><a href="#pret">Preț</a></li>
   </ul>
-  <a href="https://wa.me/40770480127" class="nav-cta" target="_blank" rel="noopener">Hai să vorbim</a>
-  <button class="menu-toggle" aria-label="Meniu" onclick="toggleMenu()">
+  <a href="https://wa.me/40770480127" class="nav-cta" target="_blank" rel="noopener" aria-label="Hai să vorbim pe WhatsApp (se deschide în fereastră nouă)">Hai să vorbim</a>
+  <button class="menu-toggle" aria-label="Meniu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Meniu de navigare">
   <a href="#despre" onclick="toggleMenu()">Despre</a>
   <a href="#servicii" onclick="toggleMenu()">Servicii</a>
   <a href="#monitorizare" onclick="toggleMenu()">Monitorizare</a>
   <a href="#povestea" onclick="toggleMenu()">Povestea</a>
   <a href="#pret" onclick="toggleMenu()">Preț</a>
-  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" style="color: var(--cyan);">Hai să vorbim</a>
+  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" aria-label="Hai să vorbim pe WhatsApp (se deschide în fereastră nouă)" style="color: var(--cyan);">Hai să vorbim</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
+<main id="content">
+<section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
     <div class="hero-content">
@@ -1056,21 +1097,21 @@ footer {
 
     <div class="monitor-grid">
       <div class="monitor-cell">
-        <span class="monitor-icon">📹</span>
+        <span class="monitor-icon" aria-hidden="true">📹</span>
         <div class="monitor-label">EVALUARE <span class="cyan">VIDEO</span></div>
         <div class="monitor-text">Îți analizez exercițiile prin video — corectez tehnică, postură și intensitate în timp real.</div>
       </div>
       <div class="monitor-cell">
-        <span class="monitor-icon">💬</span>
+        <span class="monitor-icon" aria-hidden="true">💬</span>
         <div class="monitor-label">SUPORT <span class="cyan">24/7</span></div>
         <div class="monitor-text">Sunt alături de tine non-stop — motivație, răspunsuri și consecvență oricând ai nevoie.</div>
       </div>
       <div class="monitor-cell">
-        <span class="monitor-icon">📸</span>
+        <span class="monitor-icon" aria-hidden="true">📸</span>
         <div class="monitor-label">GHIDARE <span class="cyan">REAL</span></div>
         <div class="monitor-text">Trimite-mi poze cu mesele tale și te ghidez instant — rămâi pe direcția corectă pas cu pas.</div>
       </div>
-      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" class="monitor-cta">
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" class="monitor-cta" aria-label="Hai să facem treaba pe WhatsApp (se deschide în fereastră nouă)">
         <div class="monitor-cta-text">HAI SĂ FACEM TREABA! →</div>
       </a>
     </div>
@@ -1117,7 +1158,7 @@ footer {
         <span>Ghidare nutrițională continuă</span>
         <span>Suport 24/7</span>
       </div>
-      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="btn-primary" target="_blank" rel="noopener">
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="btn-primary" target="_blank" rel="noopener" aria-label="Hai să facem treaba pe WhatsApp (se deschide în fereastră nouă)">
         Hai să facem treaba!
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
@@ -1125,13 +1166,15 @@ footer {
   </div>
 </section>
 
+</main>
+
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">NOWA <span class="cyan">SILUETA</span></div>
     <div class="footer-contact">
       <a href="tel:+40770480127">0770 480 127</a> ·
-      <a href="https://wa.me/40770480127" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://wa.me/40770480127" target="_blank" rel="noopener" aria-label="WhatsApp (se deschide în fereastră nouă)">WhatsApp</a>
     </div>
     <div class="footer-copy">© 2025 NOWA SILUETA — by Ayana</div>
   </div>
@@ -1157,10 +1200,28 @@ document.addEventListener('DOMContentLoaded', () => {
   window.toggleMenu = function() {
     const menu = document.getElementById('mobileMenu');
     const toggle = document.querySelector('.menu-toggle');
-    menu.classList.toggle('active');
+    const isOpen = menu.classList.toggle('active');
     toggle.classList.toggle('active');
-    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) {
+      // Focus first link in menu
+      const firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    } else {
+      toggle.focus();
+    }
   };
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const menu = document.getElementById('mobileMenu');
+      if (menu && menu.classList.contains('active')) {
+        toggleMenu();
+      }
+    }
+  });
 
   // ─── Hero entrance ───
   const heroTl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.2 } });
