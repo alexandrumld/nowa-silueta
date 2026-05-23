@@ -64,6 +64,9 @@
   outline-offset: 2px;
 }
 
+/* Scroll margin for fixed nav */
+[id], section, main { scroll-margin-top: 5rem; }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -122,6 +125,7 @@ nav.scrolled {
   list-style: none;
   gap: 2rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 768px) { .nav-links { display: flex; } }
@@ -129,7 +133,7 @@ nav.scrolled {
 .nav-links a {
   font-family: var(--f-body);
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--gray-muted);
@@ -186,7 +190,7 @@ nav.scrolled {
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 .mobile-menu {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   z-index: 99;
@@ -195,9 +199,15 @@ nav.scrolled {
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-.mobile-menu.active { display: flex; }
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .mobile-menu a {
   font-family: var(--f-display);
@@ -458,7 +468,7 @@ nav.scrolled {
 .section-tag {
   font-family: var(--f-body);
   font-weight: 600;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -633,7 +643,7 @@ nav.scrolled {
 
 .service-num {
   font-family: var(--f-display);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--cyan);
   letter-spacing: 0.1em;
@@ -709,6 +719,7 @@ nav.scrolled {
   letter-spacing: 0.02em;
   color: var(--white);
   margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .monitor-cell .monitor-label .cyan { color: var(--cyan); }
@@ -849,6 +860,7 @@ nav.scrolled {
   line-height: 1;
   color: var(--white);
   margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .pricing-heading .cyan { color: var(--cyan); }
@@ -874,10 +886,10 @@ nav.scrolled {
 
 .pricing-period {
   font-family: var(--f-display);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--gray-dark);
+  color: var(--gray-muted);
   margin-top: 0.5rem;
   margin-bottom: 3rem;
 }
@@ -900,6 +912,25 @@ nav.scrolled {
   content: '—';
   color: var(--cyan);
   margin-right: 0.5rem;
+}
+
+.pricing-includes strong {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.pricing-phone-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: var(--f-body);
+  font-size: 0.8rem;
+  color: var(--gray-muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.pricing-phone-link:hover {
+  color: var(--cyan);
 }
 
 /* ═══ FOOTER ═══ */
@@ -948,8 +979,8 @@ footer {
 
 .footer-copy {
   font-family: var(--f-body);
-  font-size: 0.65rem;
-  color: var(--gray-dark);
+  font-size: 0.75rem;
+  color: var(--gray-muted);
   letter-spacing: 0.05em;
 }
 
@@ -981,7 +1012,7 @@ footer {
     <li><a href="#povestea">Povestea</a></li>
     <li><a href="#pret">Preț</a></li>
   </ul>
-  <a href="https://wa.me/40770480127" class="nav-cta" target="_blank" rel="noopener" aria-label="Hai să vorbim pe WhatsApp (se deschide în fereastră nouă)">Hai să vorbim</a>
+  <a href="https://wa.me/40770480127" class="nav-cta" target="_blank" rel="noopener" aria-label="Programare pe WhatsApp (se deschide în fereastră nouă)">Programare pe WhatsApp</a>
   <button class="menu-toggle" aria-label="Meniu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -994,7 +1025,7 @@ footer {
   <a href="#monitorizare" onclick="toggleMenu()">Monitorizare</a>
   <a href="#povestea" onclick="toggleMenu()">Povestea</a>
   <a href="#pret" onclick="toggleMenu()">Preț</a>
-  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" aria-label="Hai să vorbim pe WhatsApp (se deschide în fereastră nouă)" style="color: var(--cyan);">Hai să vorbim</a>
+  <a href="https://wa.me/40770480127" target="_blank" rel="noopener" aria-label="Programare pe WhatsApp (se deschide în fereastră nouă)" style="color: var(--cyan);">Programare pe WhatsApp</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -1012,10 +1043,10 @@ footer {
       </p>
       <div class="hero-actions">
         <a href="#pret" class="btn-primary">
-          Transformarea începe acum
+          Vezi programul complet
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <span class="hero-phone"><a href="tel:+40770480127">0770 480 127</a></span>
+        <span class="hero-phone">Sau sună: <a href="tel:+40770480127">0770 480 127</a></span>
       </div>
     </div>
     <div class="hero-photo">
@@ -1033,7 +1064,7 @@ footer {
 <!-- ═══ WELCOME ═══ -->
 <section class="welcome" id="despre">
   <div class="section-wrap">
-    <div class="section-tag">Despre</div>
+    <div class="section-tag">Despre mine</div>
     <div class="welcome-grid">
       <div>
         <h2 class="section-heading">BINE AI VENIT<br>ÎN <span class="cyan">PROGRAMUL</span></h2>
@@ -1098,21 +1129,21 @@ footer {
     <div class="monitor-grid">
       <div class="monitor-cell">
         <span class="monitor-icon" aria-hidden="true">📹</span>
-        <div class="monitor-label">EVALUARE <span class="cyan">VIDEO</span></div>
+        <h3 class="monitor-label">EVALUARE <span class="cyan">VIDEO</span></h3>
         <div class="monitor-text">Îți analizez exercițiile prin video — corectez tehnică, postură și intensitate în timp real.</div>
       </div>
       <div class="monitor-cell">
         <span class="monitor-icon" aria-hidden="true">💬</span>
-        <div class="monitor-label">SUPORT <span class="cyan">24/7</span></div>
+        <h3 class="monitor-label">SUPORT <span class="cyan">24/7</span></h3>
         <div class="monitor-text">Sunt alături de tine non-stop — motivație, răspunsuri și consecvență oricând ai nevoie.</div>
       </div>
       <div class="monitor-cell">
         <span class="monitor-icon" aria-hidden="true">📸</span>
-        <div class="monitor-label">GHIDARE <span class="cyan">REAL</span></div>
+        <h3 class="monitor-label">GHIDARE <span class="cyan">REAL</span></h3>
         <div class="monitor-text">Trimite-mi poze cu mesele tale și te ghidez instant — rămâi pe direcția corectă pas cu pas.</div>
       </div>
-      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" class="monitor-cta" aria-label="Hai să facem treaba pe WhatsApp (se deschide în fereastră nouă)">
-        <div class="monitor-cta-text">HAI SĂ FACEM TREABA! →</div>
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." target="_blank" rel="noopener" class="monitor-cta" aria-label="Discută cu mine pe WhatsApp (se deschide în fereastră nouă)">
+        <div class="monitor-cta-text">Discută cu mine pe WhatsApp →</div>
       </a>
     </div>
   </div>
@@ -1148,20 +1179,21 @@ footer {
     <h2 class="section-heading">HAI SĂ LUCRĂM <span class="cyan">ÎMPREUNĂ</span></h2>
 
     <div class="pricing-card">
-      <div class="pricing-heading">PROGRAM <span class="cyan">COMPLET</span></div>
+      <h3 class="pricing-heading">PROGRAM <span class="cyan">COMPLET</span></h3>
       <div class="pricing-amount">350<span class="unit">ron</span></div>
-      <div class="pricing-period">pe lună</div>
+      <div class="pricing-period">/ lună</div>
       <div class="pricing-includes">
-        <span>Plan alimentar personalizat</span>
+        <span><strong>Plan alimentar personalizat</strong></span>
         <span>Plan de antrenament structurat</span>
         <span>Evaluare video a exercițiilor</span>
-        <span>Ghidare nutrițională continuă</span>
-        <span>Suport 24/7</span>
+        <span><strong>Ghidare nutrițională continuă</strong></span>
+        <span><strong>Suport 24/7</strong></span>
       </div>
-      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="btn-primary" target="_blank" rel="noopener" aria-label="Hai să facem treaba pe WhatsApp (se deschide în fereastră nouă)">
-        Hai să facem treaba!
+      <a href="https://wa.me/40770480127?text=Bună!%20Vreau%20să%20încep%20programul." class="btn-primary" target="_blank" rel="noopener" aria-label="Rezervă locul pe WhatsApp — 350 RON/lună (se deschide în fereastră nouă)">
+        Rezervă locul — 350 RON/lună
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
+      <a href="tel:+40770480127" class="pricing-phone-link">Sau sună: 0770 480 127</a>
     </div>
   </div>
 </section>
@@ -1270,19 +1302,6 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.from('.pricing-amount', { scrollTrigger: { trigger: '.pricing-card', start: 'top 80%' }, y: 30, opacity: 0, duration: 0.9, ease: 'expo.out', delay: 0.25 });
 
   // ─── Hover interactions ───
-  document.querySelectorAll('.service-item').forEach(item => {
-    const title = item.querySelector('.service-title');
-    if (!title) return;
-    item.addEventListener('mouseenter', () => {
-      gsap.to(item, { paddingLeft: '1rem', duration: 0.35, ease: 'power2.out' });
-      gsap.to(title, { color: '#1DFFF1', duration: 0.3, ease: 'power2.out' });
-    });
-    item.addEventListener('mouseleave', () => {
-      gsap.to(item, { paddingLeft: 0, duration: 0.5, ease: 'power3.out' });
-      gsap.to(title, { color: '#FFFFFF', duration: 0.4, ease: 'power2.out' });
-    });
-  });
-
   document.querySelectorAll('.monitor-cell').forEach(cell => {
     cell.addEventListener('mouseenter', () => gsap.to(cell, { y: -4, duration: 0.35, ease: 'power2.out' }));
     cell.addEventListener('mouseleave', () => gsap.to(cell, { y: 0, duration: 0.5, ease: 'power3.out' }));
