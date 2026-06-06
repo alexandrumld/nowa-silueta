@@ -11,6 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexandrumld.github.io/nowa-silueta/">
 <meta property="og:locale" content="ro_RO">
+<link rel="canonical" href="https://alexandrumld.github.io/nowa-silueta/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NOWA SILUETA — by Ayana">
 <meta name="twitter:description" content="Coaching personal fitness & nutriție by Ayana.">
@@ -1208,7 +1209,7 @@ footer {
       <a href="tel:+40770480127">0770 480 127</a> ·
       <a href="https://wa.me/40770480127" target="_blank" rel="noopener" aria-label="WhatsApp (se deschide în fereastră nouă)">WhatsApp</a>
     </div>
-    <div class="footer-copy">© 2026 NOWA SILUETA — by Ayana</div>
+    <div class="footer-copy" id="footer-copy">© 2026 NOWA SILUETA — by Ayana</div>
   </div>
 </footer>
 
@@ -1300,6 +1301,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pricing card
   gsap.from('.pricing-card', { scrollTrigger: { trigger: '.pricing-card', start: 'top 82%' }, y: 50, opacity: 0, scale: 0.96, duration: 1.1, ease: 'expo.out' });
   gsap.from('.pricing-amount', { scrollTrigger: { trigger: '.pricing-card', start: 'top 80%' }, y: 30, opacity: 0, duration: 0.9, ease: 'expo.out', delay: 0.25 });
+
+  // ─── Footer year (auto-updates Jan 1) ───
+  const fc = document.getElementById('footer-copy');
+  if (fc) fc.textContent = `© ${new Date().getFullYear()} NOWA SILUETA — by Ayana`;
 
   // ─── Hover interactions ───
   document.querySelectorAll('.monitor-cell').forEach(cell => {
